@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -20,6 +22,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
      
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        let reference = Database.database().reference()
+        let rooms = reference.child("roomsTest")
+        rooms.setValue("Hello World")
+        
         // Do any additional setup after loading the view.
        
     }
