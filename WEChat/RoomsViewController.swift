@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RoomsViewController: UIViewController {
 
@@ -16,12 +17,21 @@ class RoomsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didPressLogout(_ sender: UIBarButtonItem) {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if ( Auth.auth().currentUser == nil) {
+            self.showLoginScreen()
+        }
+    }
+    
+    func showLoginScreen(){
         let formScreen = self.storyboard?.instantiateViewController(identifier: "LoginScreen") as! ViewController
-        self.present(formScreen, animated: true, completion: nil)
-        
-        
-        
+             self.present(formScreen, animated: true, completion: nil)
+    }
+    
+    @IBAction func didPressLogout(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        self.showLoginScreen()
     }
     
     /*

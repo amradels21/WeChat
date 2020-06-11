@@ -107,6 +107,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
           { (result, error) in
               if(error == nil){
                 guard let userId = result?.user.uid, let username = cell.usernameTextField.text else{return}
+                
+                self.dismiss(animated: true, completion: nil)
                 //Create User Info into database
                 let reference = Database.database().reference()
                 let user = reference.child("users").child(userId)
