@@ -9,13 +9,30 @@
 import UIKit
 import Firebase
 
-class RoomsViewController: UIViewController {
+class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var roomTable: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.roomTable.delegate = self
+        self.roomTable.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell")!
+        cell.textLabel?.text = "Hello"
+        
+        return cell
+    }
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,6 +50,16 @@ class RoomsViewController: UIViewController {
         try! Auth.auth().signOut()
         self.showLoginScreen()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /*
     // MARK: - Navigation

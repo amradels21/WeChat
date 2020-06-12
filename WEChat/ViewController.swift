@@ -132,8 +132,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
       }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return collectionView.frame.size 
+        return collectionView.frame.size
     }
 
 
