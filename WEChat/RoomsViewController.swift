@@ -25,13 +25,24 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRoom = self.rooms[indexPath.row]
+        let chatRoomView = self.storyboard?.instantiateViewController(identifier:
+            "chatRoom")  as! ChatRoomViewController
+        
+        chatRoomView.room = selectedRoom
+        self.navigationController?.pushViewController(chatRoomView, animated: true)
+        
+    }
+    
+    
     //Observe to rooms created to tableView
     func observeRooms(){
         let reference = Database.database().reference()
         reference.child("rooms").observe(.childAdded) { (snapshot) in
             if let dataArray = snapshot.value as? [String: Any] {
                 if let roomName = dataArray["roomName"] as? String {
-                    let room = Room.init(roomName: roomName)
+                    let room = Room.init(roomId: snapshot.key,roomName: roomName)
                     self.rooms.append(room)
                     self.roomTable.reloadData()
                 }

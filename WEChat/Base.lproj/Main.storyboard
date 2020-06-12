@@ -264,6 +264,70 @@
             </objects>
             <point key="canvasLocation" x="1855.072463768116" y="119.86607142857142"/>
         </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="Av3-yu-rio">
+            <objects>
+                <viewController storyboardIdentifier="chatRoom" id="HMf-uV-ahX" customClass="ChatRoomViewController" customModule="WEChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yLf-lB-44w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-E8-rh9">
+                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6l-Zz-ozG">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="60"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message here " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Et6-ER-lNM">
+                                                <rect key="frame" x="10" y="0.0" width="324" height="60"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Et6-ER-lNM" firstAttribute="top" secondItem="p6l-Zz-ozG" secondAttribute="top" id="5pa-Ch-k0f"/>
+                                            <constraint firstItem="Et6-ER-lNM" firstAttribute="leading" secondItem="p6l-Zz-ozG" secondAttribute="leading" constant="10" id="Vy7-XB-iv4"/>
+                                            <constraint firstAttribute="bottom" secondItem="Et6-ER-lNM" secondAttribute="bottom" id="fh7-aS-QHf"/>
+                                            <constraint firstAttribute="trailing" secondItem="Et6-ER-lNM" secondAttribute="trailing" constant="10" id="xE6-7M-Ruv"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbG-6H-45y">
+                                        <rect key="frame" x="344" y="0.0" width="70" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.76538509129999999" blue="0.16841167209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="aHP-ze-kVY"/>
+                                        </constraints>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didPressSendBtn:" destination="HMf-uV-ahX" eventType="touchUpInside" id="rXT-OU-hSu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="X6O-Cm-uHj"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0k2-ys-39b" firstAttribute="trailing" secondItem="ifx-E8-rh9" secondAttribute="trailing" id="bfT-kJ-EF2"/>
+                            <constraint firstItem="ifx-E8-rh9" firstAttribute="leading" secondItem="0k2-ys-39b" secondAttribute="leading" id="g3f-7L-i0h"/>
+                            <constraint firstItem="ifx-E8-rh9" firstAttribute="bottom" secondItem="0k2-ys-39b" secondAttribute="bottom" id="sIP-5U-d5K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0k2-ys-39b"/>
+                    </view>
+                    <connections>
+                        <outlet property="chatTextField" destination="Et6-ER-lNM" id="QuY-Fh-mMb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDZ-rT-Dve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2761" y="127"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaM-cs-Tdz">
             <objects>
@@ -272,6 +336,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w6E-yI-PPD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
