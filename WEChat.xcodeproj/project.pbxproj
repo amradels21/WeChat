@@ -17,6 +17,7 @@
 		C45392B724928C320078D375 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392B624928C320078D375 /* FormCell.swift */; };
 		C45392BD2492AB2B0078D375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45392BC2492AB2B0078D375 /* GoogleService-Info.plist */; };
 		C45392BF2492CDFF0078D375 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392BE2492CDFF0078D375 /* RoomsViewController.swift */; };
+		C45392C2249305C10078D375 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392C1249305C10078D375 /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C45392B624928C320078D375 /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
 		C45392BC2492AB2B0078D375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C45392BE2492CDFF0078D375 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		C45392C1249305C10078D375 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				C45392A22492794B0078D375 /* AppDelegate.swift */,
+				C45392C02493059A0078D375 /* Models */,
 				C45392A42492794B0078D375 /* SceneDelegate.swift */,
 				C45392B624928C320078D375 /* FormCell.swift */,
 				C45392A62492794B0078D375 /* ViewController.swift */,
@@ -98,6 +101,14 @@
 				C45392BE2492CDFF0078D375 /* RoomsViewController.swift */,
 			);
 			path = WEChat;
+			sourceTree = "<group>";
+		};
+		C45392C02493059A0078D375 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C45392C1249305C10078D375 /* Room.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +229,7 @@
 			files = (
 				C45392A72492794B0078D375 /* ViewController.swift in Sources */,
 				C45392B724928C320078D375 /* FormCell.swift in Sources */,
+				C45392C2249305C10078D375 /* Room.swift in Sources */,
 				C45392BF2492CDFF0078D375 /* RoomsViewController.swift in Sources */,
 				C45392A32492794B0078D375 /* AppDelegate.swift in Sources */,
 				C45392A52492794B0078D375 /* SceneDelegate.swift in Sources */,

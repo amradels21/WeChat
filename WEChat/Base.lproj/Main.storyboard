@@ -210,6 +210,9 @@
                                         <state key="normal" title="Create Room">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressCreateRoom:" destination="CVG-lk-ZFJ" eventType="touchUpInside" id="gj3-ME-vYA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -253,6 +256,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newRoomTextField" destination="3MM-73-ovn" id="qpp-LC-IPS"/>
                         <outlet property="roomTable" destination="MXp-2Q-ybX" id="LaD-vU-AQA"/>
                     </connections>
                 </viewController>

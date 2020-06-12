@@ -12,23 +12,63 @@ import Firebase
 class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var roomTable: UITableView!
-
+    
+    @IBOutlet weak var newRoomTextField: UITextField!
+    var rooms = [Room]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.roomTable.delegate = self
         self.roomTable.dataSource = self
-        
+        observeRooms()
 
         // Do any additional setup after loading the view.
     }
     
+    //Observe to rooms created to tableView
+    func observeRooms(){
+        let reference = Database.database().reference()
+        reference.child("rooms").observe(.childAdded) { (snapshot) in
+            if let dataArray = snapshot.value as? [String: Any] {
+                if let roomName = dataArray["roomName"] as? String {
+                    let room = Room.init(roomName: roomName)
+                    self.rooms.append(room)
+                    self.roomTable.reloadData()
+                }
+            }
+            
+        }
+    }
+    
+    
+    @IBAction func didPressCreateRoom(_ sender: UIButton) {
+        guard let roomName = self.newRoomTextField.text, roomName.isEmpty == false else{
+            return
+        }
+        let reference = Database.database().reference()
+        let room = reference.child("rooms").childByAutoId()
+        
+        let dataArray: [String: Any] = ["roomName": roomName]
+        room.setValue(dataArray) { (error, ref) in
+            if(error == nil){
+                self.newRoomTextField.text = ""
+            }
+         
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Get Room of every cells index
+        let room = self.rooms[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell")!
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = room.roomName
         
         return cell
     }
