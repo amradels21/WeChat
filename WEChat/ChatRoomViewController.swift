@@ -20,34 +20,66 @@ class ChatRoomViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
     @IBAction func didPressSendBtn(_ sender: UIButton) {
-        guard let chatText = self.chatTextField.text, chatText.isEmpty == false,
-            let userId = Auth.auth().currentUser?.uid  else {
-            return
-        }
+          guard let chatText = self.chatTextField.text, chatText.isEmpty == false
+               else {
+              return
+          }
+          
+          //Send and verify that message is send by the completion block
+          sendMessage(text: chatText) { (isSuccess) in
+              if(isSuccess){
+                print("Message Sent!")
+              }
+          }
+      }
+    
+    func getUsernameWithId(id: String, completion: @escaping (_ userName: String?) -> () ){
         
         let reference = Database.database().reference()
-        let user = reference.child("users").child(userId)
-        
+        let user = reference.child("users").child(id)
+               
         user.child("username").observeSingleEvent(of: .value) { (snapshot) in
-            if let userName = snapshot.value as? String{
-                if let roomId = self.room?.roomId {
-                    
-                    let dataArray: [String: Any] = ["senderName": userName, "text": chatText]
-                    let room = reference.child("rooms").child(roomId)
-                    room.child("messages").childByAutoId().setValue(dataArray) { (error, ref) in
-                        if(error == nil){
-                            self.chatTextField.text = ""
-                            print("Room added to database Successfully")
-                        }
-                    }
-                }
+            if let userName = snapshot.value as? String {
+                completion(userName)
+            }
+            else{
+                completion(nil)
             }
         }
-        
-        
     }
+    
+    func sendMessage(text: String, completion: @escaping (_ isSuccess: Bool) -> () ){
+        guard let userId = Auth.auth().currentUser?.uid else{
+            return
+            
+        }
+        let reference = Database.database().reference()
+        let user = reference.child("users").child(userId)
+       
+        getUsernameWithId(id: userId) { (userName) in
+            if let userName = userName{
+                if let roomId = self.room?.roomId {
+                    let dataArray: [String: Any] = ["senderName": userName, "text": text]
+                        let room = reference.child("rooms").child(roomId)
+                            room.child("messages").childByAutoId().setValue(dataArray) { (error, ref) in
+                            if(error == nil){
+                                completion(true)
+                                self.chatTextField.text = ""
+                                print("Room added to database Successfully")
+                                     }
+                            else{
+                                completion(false)
+                                   
+                                }
+                    }
+            }
+        }
+             
+    }
+    
+}
+  
     
     /*
     // MARK: - Navigation
@@ -58,5 +90,8 @@ class ChatRoomViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    
+    
 
 }
