@@ -9,16 +9,64 @@
 import UIKit
 import Firebase
 
-class ChatRoomViewController: UIViewController {
-
+class ChatRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var chatMessages = [Message]()
+    
+    @IBOutlet weak var chatTableView: UITableView!
+    
     @IBOutlet weak var chatTextField: UITextField!
     var room: Room?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatTableView.dataSource = self
+        chatTableView.delegate = self
 
+        observeMessages()
         // Do any additional setup after loading the view.
     }
+    
+    func observeMessages(){
+        guard let roomId = self.room?.roomId else{
+            return
+        }
+        
+        let reference = Database.database().reference()
+
+        reference.child("rooms").child(roomId).child("messages").observe(.childAdded) { (snapchot) in
+            
+            if let dataArray = snapchot.value as? [String: Any] {
+                guard let senderName = dataArray["senderName"] as? String, let messageText = dataArray["text"] as? String else {
+                    
+                    return
+                }
+                
+                let message = Message.init(messageKey: snapchot.key, SenderName: senderName, messageText: messageText)
+                self.chatMessages.append(message)
+                self.chatTableView.reloadData()
+                
+            }
+            
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         
+        let message = self.chatMessages[indexPath.row]
+        
+        let cell = chatTableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
+      
+        cell.userNameLabel.text = message.SenderName
+        cell.chatTextView.text = message.messageText
+        
+        return cell
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.chatMessages.count
+      }
     
     @IBAction func didPressSendBtn(_ sender: UIButton) {
           guard let chatText = self.chatTextField.text, chatText.isEmpty == false
@@ -79,6 +127,8 @@ class ChatRoomViewController: UIViewController {
     }
     
 }
+  
+    
   
     
     /*

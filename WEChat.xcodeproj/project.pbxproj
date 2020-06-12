@@ -19,6 +19,8 @@
 		C45392BF2492CDFF0078D375 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392BE2492CDFF0078D375 /* RoomsViewController.swift */; };
 		C45392C2249305C10078D375 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392C1249305C10078D375 /* Room.swift */; };
 		C45392C42493AAC10078D375 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392C32493AAC10078D375 /* ChatRoomViewController.swift */; };
+		C45392C6249442B60078D375 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392C5249442B60078D375 /* ChatCell.swift */; };
+		C45392C8249448BC0078D375 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45392C7249448BC0078D375 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		C45392BE2492CDFF0078D375 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		C45392C1249305C10078D375 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		C45392C32493AAC10078D375 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		C45392C5249442B60078D375 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		C45392C7249448BC0078D375 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 				C45392BC2492AB2B0078D375 /* GoogleService-Info.plist */,
 				C45392B0249279500078D375 /* Info.plist */,
 				C45392C32493AAC10078D375 /* ChatRoomViewController.swift */,
+				C45392C5249442B60078D375 /* ChatCell.swift */,
 				C45392BE2492CDFF0078D375 /* RoomsViewController.swift */,
 			);
 			path = WEChat;
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C45392C1249305C10078D375 /* Room.swift */,
+				C45392C7249448BC0078D375 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,7 +237,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C45392C42493AAC10078D375 /* ChatRoomViewController.swift in Sources */,
+				C45392C6249442B60078D375 /* ChatCell.swift in Sources */,
 				C45392A72492794B0078D375 /* ViewController.swift in Sources */,
+				C45392C8249448BC0078D375 /* Message.swift in Sources */,
 				C45392B724928C320078D375 /* FormCell.swift in Sources */,
 				C45392C2249305C10078D375 /* Room.swift in Sources */,
 				C45392BF2492CDFF0078D375 /* RoomsViewController.swift in Sources */,

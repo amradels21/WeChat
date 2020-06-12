@@ -311,22 +311,71 @@
                                     <constraint firstAttribute="height" constant="60" id="X6O-Cm-uHj"/>
                                 </constraints>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h8j-vz-SIw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chatCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="52" id="Y86-Lb-UrE" customClass="ChatCell" customModule="WEChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y86-Lb-UrE" id="ug0-0n-0TY" customClass="ChatCell" customModule="WEChat" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2TS-bV-OKI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq6-13-ueA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4FA-ae-0NG">
+                                                            <rect key="frame" x="0.0" y="20.5" width="414" height="31.5"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2TS-bV-OKI" firstAttribute="top" secondItem="ug0-0n-0TY" secondAttribute="top" id="ivP-VL-e2x"/>
+                                                <constraint firstItem="2TS-bV-OKI" firstAttribute="leading" secondItem="ug0-0n-0TY" secondAttribute="leading" id="pSJ-GL-zW8"/>
+                                                <constraint firstAttribute="bottom" secondItem="2TS-bV-OKI" secondAttribute="bottom" id="wkd-KR-CVl"/>
+                                                <constraint firstAttribute="trailing" secondItem="2TS-bV-OKI" secondAttribute="trailing" id="zon-zu-W2r"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatTextView" destination="4FA-ae-0NG" id="EUM-Pu-ctg"/>
+                                            <outlet property="userNameLabel" destination="Jq6-13-ueA" id="jpM-dG-9It"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="h8j-vz-SIw" firstAttribute="top" secondItem="0k2-ys-39b" secondAttribute="top" id="07w-na-ahP"/>
+                            <constraint firstItem="h8j-vz-SIw" firstAttribute="leading" secondItem="0k2-ys-39b" secondAttribute="leading" id="5Vi-z0-S62"/>
+                            <constraint firstItem="0k2-ys-39b" firstAttribute="trailing" secondItem="h8j-vz-SIw" secondAttribute="trailing" id="Px4-Dx-59t"/>
                             <constraint firstItem="0k2-ys-39b" firstAttribute="trailing" secondItem="ifx-E8-rh9" secondAttribute="trailing" id="bfT-kJ-EF2"/>
                             <constraint firstItem="ifx-E8-rh9" firstAttribute="leading" secondItem="0k2-ys-39b" secondAttribute="leading" id="g3f-7L-i0h"/>
+                            <constraint firstItem="ifx-E8-rh9" firstAttribute="top" secondItem="h8j-vz-SIw" secondAttribute="bottom" id="maa-z3-La3"/>
                             <constraint firstItem="ifx-E8-rh9" firstAttribute="bottom" secondItem="0k2-ys-39b" secondAttribute="bottom" id="sIP-5U-d5K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0k2-ys-39b"/>
                     </view>
                     <connections>
+                        <outlet property="chatTableView" destination="h8j-vz-SIw" id="dMU-R8-CoV"/>
                         <outlet property="chatTextField" destination="Et6-ER-lNM" id="QuY-Fh-mMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDZ-rT-Dve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="127"/>
+            <point key="canvasLocation" x="2760.8695652173915" y="126.5625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaM-cs-Tdz">
