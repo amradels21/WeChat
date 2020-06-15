@@ -315,15 +315,15 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chatCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="52" id="Y86-Lb-UrE" customClass="ChatCell" customModule="WEChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chatCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="80" id="Y86-Lb-UrE" customClass="ChatCell" customModule="WEChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y86-Lb-UrE" id="ug0-0n-0TY" customClass="ChatCell" customModule="WEChat" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2TS-bV-OKI">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="52"/>
+                                                    <rect key="frame" x="10" y="0.0" width="394" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq6-13-ueA">
                                                             <rect key="frame" x="0.0" y="0.0" width="62" height="16"/>
@@ -332,10 +332,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZi-Dv-9om">
-                                                            <rect key="frame" x="0.0" y="16" width="108" height="36"/>
+                                                            <rect key="frame" x="0.0" y="16" width="240" height="64"/>
                                                             <subviews>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Message" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FA-ae-0NG">
-                                                                    <rect key="frame" x="6" y="0.0" width="96" height="36"/>
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Message is not cool however this is not good a all" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FA-ae-0NG">
+                                                                    <rect key="frame" x="6" y="0.0" width="228" height="64"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="lz4-V0-p5Z"/>
@@ -352,6 +352,9 @@
                                                                 <constraint firstItem="4FA-ae-0NG" firstAttribute="leading" secondItem="QZi-Dv-9om" secondAttribute="leading" constant="6" id="g9X-H4-uHo"/>
                                                                 <constraint firstItem="4FA-ae-0NG" firstAttribute="top" secondItem="QZi-Dv-9om" secondAttribute="top" id="uUo-gS-obf"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
@@ -364,6 +367,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="chatStack" destination="2TS-bV-OKI" id="Fit-VH-ntk"/>
+                                            <outlet property="chatTextBubble" destination="QZi-Dv-9om" id="LCH-9N-szg"/>
                                             <outlet property="chatTextView" destination="4FA-ae-0NG" id="EUM-Pu-ctg"/>
                                             <outlet property="userNameLabel" destination="Jq6-13-ueA" id="jpM-dG-9It"/>
                                         </connections>

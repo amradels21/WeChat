@@ -11,5 +11,6 @@ import UIKit
 struct Message {
     var messageKey: String?
     var SenderName: String?
-    var messageText: String? 
+    var messageText: String?
+    var userId: String?
 }

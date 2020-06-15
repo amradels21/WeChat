@@ -22,7 +22,10 @@ class ChatRoomViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         chatTableView.dataSource = self
         chatTableView.delegate = self
+        chatTableView.separatorStyle = .none
+        chatTableView.allowsSelection = false
 
+        title = room?.roomName
         observeMessages()
         // Do any additional setup after loading the view.
     }
@@ -37,12 +40,12 @@ class ChatRoomViewController: UIViewController, UITableViewDelegate, UITableView
         reference.child("rooms").child(roomId).child("messages").observe(.childAdded) { (snapchot) in
             
             if let dataArray = snapchot.value as? [String: Any] {
-                guard let senderName = dataArray["senderName"] as? String, let messageText = dataArray["text"] as? String else {
+                guard let senderName = dataArray["senderName"] as? String, let messageText = dataArray["text"] as? String, let senderId = dataArray["senderId"] as? String else {
                     
                     return
                 }
                 
-                let message = Message.init(messageKey: snapchot.key, SenderName: senderName, messageText: messageText)
+                let message = Message.init(messageKey: snapchot.key, SenderName: senderName, messageText: messageText, userId: senderId)
                 self.chatMessages.append(message)
                 self.chatTableView.reloadData()
                 
@@ -57,9 +60,13 @@ class ChatRoomViewController: UIViewController, UITableViewDelegate, UITableView
         let message = self.chatMessages[indexPath.row]
         
         let cell = chatTableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatCell
-      
-        cell.userNameLabel.text = message.SenderName
-        cell.chatTextView.text = message.messageText
+        cell.setMessageData(message: message)
+     
+        if(message.userId == Auth.auth().currentUser!.uid){
+            cell.setBubbleType(type: .outgoing)
+        }else{
+            cell.setBubbleType(type: .incoming)
+        }
         
         return cell
         
@@ -107,8 +114,8 @@ class ChatRoomViewController: UIViewController, UITableViewDelegate, UITableView
        
         getUsernameWithId(id: userId) { (userName) in
             if let userName = userName{
-                if let roomId = self.room?.roomId {
-                    let dataArray: [String: Any] = ["senderName": userName, "text": text]
+                if let roomId = self.room?.roomId, let senderId = Auth.auth().currentUser?.uid {
+                    let dataArray: [String: Any] = ["senderName": userName, "text": text, "senderId": senderId ]
                         let room = reference.child("rooms").child(roomId)
                             room.child("messages").childByAutoId().setValue(dataArray) { (error, ref) in
                             if(error == nil){
